@@ -1,4 +1,3 @@
-
 module.exports = {
   entry: "./src/index.tsx",
   module: {
@@ -32,5 +31,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".", ".js", ".jsx", ".ts", ".tsx"]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html"
+    })
+  ]
 };

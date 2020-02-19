@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Files\" />
-    <Folder Include="Новая папка\" />
   </ItemGroup>
 
 </Project>
