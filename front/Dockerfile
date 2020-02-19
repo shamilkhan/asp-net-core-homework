@@ -2,5 +2,6 @@ FROM node:latest
 WORKDIR /app
 COPY . /app
 RUN npm install
-CMD npm run build
+RUN npm run build
 EXPOSE 3000
+ENTRYPOINT ["node", "server.js"]
