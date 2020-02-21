@@ -1,6 +1,9 @@
 import React from "react";
-import { Form } from "antd";
+import Loader from "../../shared/loader";
 
 function Items() {
-    return 
+  const [loading, setLoading] = React.useState(true);
+  return <div>{loading ? <Loader /> : <div>Content</div>}</div>;
 }
+
+export default Items;

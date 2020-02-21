@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
 import CreateComponent from "./create";
+import Page404 from "./404";
+import Items from "./items";
 
 export default function() {
   return (
@@ -16,10 +18,10 @@ export default function() {
             style={{ lineHeight: "64px" }}
           >
             <Menu.Item key="1">
-              <Link to="/all">Все записи</Link>
+              <Link to="/">Все посты</Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/create">Создать</Link>
+              <Link to="/create">Создать пост</Link>
             </Menu.Item>
           </Menu>
         </Layout.Header>
@@ -36,7 +38,12 @@ export default function() {
           <Route path="/create">
             <CreateComponent />
           </Route>
-          <Route path="*">404</Route>
+          <Route exact path="/">
+            <Items />
+          </Route>
+          <Route path="*">
+            <Page404 />
+          </Route>
         </Switch>
       </Layout.Content>
     </Router>
