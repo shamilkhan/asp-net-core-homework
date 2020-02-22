@@ -1,4 +1,4 @@
-using _18_02_2020.Controllers.Files;
+using _18_02_2020.Controllers.Articles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,13 +29,7 @@ namespace _18_02_2020
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/file", new FileController().Get);
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-                endpoints.MapPost("/file", new FileController().Post);
-                endpoints.MapDelete("/file", new FileController().Delete);
+                endpoints.MapPost("/create", new ArticleController().Create);
             });
         }
     }
