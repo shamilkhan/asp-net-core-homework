@@ -1,4 +1,5 @@
 import React from "react";
+import loadAll from "../../api/get-all-articles";
 import Loader from "../../shared/loader";
 import Item from "./article";
 
@@ -29,11 +30,14 @@ const fakeData = [
 ];
 
 function Items() {
+  React.useEffect( () => {
+    loadAll();
+  }, []);
   return (
     <>
       {fakeData.map(item => {
         const { id, name, text } = item;
-        return <Item key={id} {...item } />;
+        return <Item key={id} {...item} />;
       })}
     </>
   );

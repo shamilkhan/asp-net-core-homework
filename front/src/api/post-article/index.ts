@@ -12,10 +12,9 @@ export default async function(props: Props) {
   Object.keys(props).forEach(key => {
     formData.append(key, props[key]);
   });
-  const result = await Xhr({
+  return await Xhr({
     path: "create",
     method: "POST",
     body: formData
   });
-  console.log("xhr", result);
 }
