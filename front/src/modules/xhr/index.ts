@@ -19,6 +19,5 @@ export default async function({
     headers.method = "POST";
   }
   let result = await fetch(`https://localhost:5001/${path}`, headers);
-  result = await result.json();
   return result;
 }

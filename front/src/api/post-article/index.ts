@@ -7,15 +7,15 @@ type Props = {
   files?: Array<string | ArrayBuffer>;
 };
 
-export default function(props: Props) {
-  // const { title, text, date, files } = props;
+export default async function(props: Props) {
   const formData: FormData = new FormData();
   Object.keys(props).forEach(key => {
     formData.append(key, props[key]);
   });
-  Xhr({
+  const result = await Xhr({
     path: "create",
     method: "POST",
     body: formData
   });
+  console.log("xhr", result);
 }

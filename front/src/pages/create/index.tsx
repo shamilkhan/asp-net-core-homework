@@ -20,13 +20,17 @@ const RegistrationForm = props => {
       let _files: Array<Promise<string | ArrayBuffer>> = files.map(file =>
         getBase64(file)
       );
-      const binaryFiles = await Promise.all(_files);
+      let binaryFiles = await Promise.all(_files);
+      binaryFiles = binaryFiles.map(file => {
+        return file;
+      });
       let { title, text, date } = values;
       if (date && typeof date.valueOf === "function") {
         date = date.valueOf();
       } else {
         date = new Date().valueOf();
       }
+
       postArticle({ title, text, files: binaryFiles, date });
     });
   };
