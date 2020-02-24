@@ -4,19 +4,17 @@ type Props = {
   body?: object;
 };
 
-export default function({ path = "", method = "GET", body = {} } = {}): Promise<
-  Response
-> {
-  return new Promise(resolve => {
-    let headers: RequestInit = { mode: "no-cors" };
-    if (method === "POST") {
-      headers.body = JSON.stringify(body);
-      headers.method = "POST";
-    }
-    fetch(`https://localhost:5001/${path}`, headers)
-      .then(res => res.json())
-      .then(res => {
-        resolve(res);
-      });
-  });
+export default async function({
+  path = "",
+  method = "GET",
+  body = {}
+} = {}): Promise<Response> {
+  let headers: RequestInit = { mode: "no-cors" };
+  if (method === "POST") {
+    headers.body = JSON.stringify(body);
+    headers.method = "POST";
+  }
+  let result = await fetch(`https://localhost:5001/${path}`, headers);
+  result = await result.json();
+  return result;
 }

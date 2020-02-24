@@ -1,7 +1,12 @@
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
+  output: {
+    filename: "index.js",
+    path: path.join(__dirname, "dist/")
+  },
   module: {
     rules: [
       {
@@ -14,6 +19,10 @@ module.exports = {
               "@babel/preset-env",
               "@babel/preset-react",
               "@babel/preset-typescript"
+            ],
+            plugins: [
+              "@babel/plugin-transform-async-to-generator",
+              "@babel/transform-runtime"
             ]
           }
         }

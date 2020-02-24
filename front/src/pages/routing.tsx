@@ -4,6 +4,7 @@ import { Layout, Menu, Breadcrumb, Icon } from "antd";
 import CreateComponent from "./create";
 import Page404 from "./404";
 import ArticlesList from "./articles-list";
+import ArticlePage from "./article";
 
 export default function() {
   return (
@@ -40,6 +41,9 @@ export default function() {
           </Route>
           <Route exact path="/">
             <ArticlesList />
+          </Route>
+          <Route path='/article/:id'>
+            <ArticlePage />
           </Route>
           <Route path="*">
             <Page404 />

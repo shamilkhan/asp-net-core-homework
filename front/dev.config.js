@@ -4,10 +4,6 @@ const commonConfig = require("./common.config");
 const merge = require("webpack-merge");
 
 module.exports = merge(commonConfig, {
-  output: {
-    filename: "index.js",
-    path: path.join(__dirname, "dist/")
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html"

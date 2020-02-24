@@ -1,6 +1,6 @@
 version: "3"
 services: 
-  back: 
+  server: 
     build: back/
     ports: 
       - 5001:5001

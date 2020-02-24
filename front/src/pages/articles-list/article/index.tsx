@@ -14,7 +14,7 @@ const Article = ({ name, text, id }: Article) => {
       style={{ marginTop: 16 }}
       type="inner"
       title={name}
-      extra={<a href="#">More</a>}
+      extra={<Link to={`/article/${id}`}>Читать далее</Link>}
     >
       {text}
     </Card>

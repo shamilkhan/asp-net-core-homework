@@ -30,6 +30,10 @@ namespace _18_02_2020
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapPost("/create", new ArticleController().Create);
+                endpoints.MapGet("/", async (HttpContext context) =>
+                {
+                    await context.Response.WriteAsync("My name");
+                });
             });
         }
     }

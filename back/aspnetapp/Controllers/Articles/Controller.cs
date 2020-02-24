@@ -19,7 +19,7 @@ namespace _18_02_2020.Controllers.Articles
             fileCount++;
             string txtFileName = Path.Combine(filePath, fileCount + ".txt");
             File.AppendAllLines(txtFileName, new string[] { requestBody });
-            context.Response.ContentType = 'application/json';
+            //context.Response.ContentType = 'application/json';
             await context.Response.WriteAsync("test");
         }
 
