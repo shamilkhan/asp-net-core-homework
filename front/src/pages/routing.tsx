@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
 import CreateComponent from "./create";
 import Page404 from "./404";
-import Items from "./items";
+import ArticlesList from "./articles-list";
 
 export default function() {
   return (
@@ -39,7 +39,7 @@ export default function() {
             <CreateComponent />
           </Route>
           <Route exact path="/">
-            <Items />
+            <ArticlesList />
           </Route>
           <Route path="*">
             <Page404 />
