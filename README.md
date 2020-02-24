@@ -3,13 +3,7 @@
 ### Start Project
 
 1.
-
-    ```
-    docker-compose build
-    ```
+`docker-compose build`
 
 2.
-
-    ```
-    docker-compose up
-    ```
+`docker-compose up`
