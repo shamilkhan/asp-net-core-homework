@@ -1,7 +1,6 @@
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import Routing from './pages/routing'
+import App from "./pages/index";
 
-
-ReactDOM.render(<Routing />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

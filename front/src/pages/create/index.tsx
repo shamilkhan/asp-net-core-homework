@@ -7,6 +7,7 @@ const RegistrationForm = props => {
     ev.preventDefault();
     const { form } = props;
     props.form.validateFields((err, values) => {
+      console.log(values);
       const { title, text } = values;
       postArticle({ title, text });
     });
@@ -40,9 +41,7 @@ const RegistrationForm = props => {
               />
             )}
           </Form.Item>
-          {/* <Form.Item>
-            <DatePicker />
-          </Form.Item> */}
+          <Form.Item>{getFieldDecorator("date")(<DatePicker />)}</Form.Item>
           {getFieldDecorator("files")(
             <Upload.Dragger name="files">
               <p className="ant-upload-drag-icon">
