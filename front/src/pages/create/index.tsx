@@ -8,7 +8,10 @@ const RegistrationForm = props => {
     const { form } = props;
     props.form.validateFields((err, values) => {
       console.log(values);
-      const { title, text } = values;
+      const { title, text, date } = values;
+      if (date && typeof date.valueOf === "function") {
+        console.log(date.valueOf());
+      }
       postArticle({ title, text });
     });
   };
@@ -20,25 +23,12 @@ const RegistrationForm = props => {
         <Form layout="vertical" onSubmit={saveFile}>
           <Form.Item>
             {getFieldDecorator("title")(
-              <Input
-                name="title"
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                type="text"
-                placeholder="Username"
-              />
+              <Input name="title" type="text" placeholder="Заголовок" />
             )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator("text")(
-              <Input
-                prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                type="text"
-                placeholder="Password"
-              />
+              <Input.TextArea rows={7} placeholder="Текст статьи" />
             )}
           </Form.Item>
           <Form.Item>{getFieldDecorator("date")(<DatePicker />)}</Form.Item>
