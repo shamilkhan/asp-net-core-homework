@@ -1,9 +1,7 @@
 # My HomeWork
 
-### Start Project
+### Start Project:
 
-1.
-`docker-compose build`
+1.`docker-compose build`
 
-2.
-`docker-compose up`
+2. `docker-compose up`
