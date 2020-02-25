@@ -1,9 +1,10 @@
 import Xhr from "../../modules/xhr";
 
 export default async function() {
-  const result = await Xhr({
+  let result = await Xhr({
     path: "articles",
     method: "GET"
   });
-  console.log(result);
+  result = await result.json();
+  return result;
 }

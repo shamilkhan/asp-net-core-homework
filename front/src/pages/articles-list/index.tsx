@@ -30,9 +30,16 @@ const fakeData = [
 ];
 
 function Items() {
-  React.useEffect( () => {
-    loadAll();
+  const [items, setItems] = React.useState([]);
+  React.useEffect(() => {
+    loadItmes();
   }, []);
+
+  const loadItmes = async () => {
+    const result = await loadAll();
+    console.log(result);
+  }
+
   return (
     <>
       {fakeData.map(item => {
