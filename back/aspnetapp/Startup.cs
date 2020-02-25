@@ -29,6 +29,7 @@ namespace _18_02_2020
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/articles", new ArticleController().GetAll);
                 endpoints.MapPost("/create", new ArticleController().Create);
                 endpoints.MapGet("/", async (HttpContext context) =>
                 {
