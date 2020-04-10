@@ -1,4 +1,6 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import loadAll from "../../api/get-all-articles";
 import Loader from "../../shared/loader";
 import Item from "./article";
@@ -7,42 +9,50 @@ const fakeData = [
   {
     id: 0,
     name: "Test",
-    text: "Text"
+    text: "Text",
   },
   {
     id: 1,
     name: "TypeScript Pro tips/patterns with (or without) React",
     text:
-      "Well, it definitely makes your Java/C# alter ego feel like home, having types within JavaScript (which is amazing !), but then, it introduces other “language features” which are not part of standard JavaScript, and because of those, it may throw a false prejudice about TypeScript, by putting it to a “Completely new language” bag, which isn’t really true IMHO."
+      "Well, it definitely makes your Java/C# alter ego feel like home, having types within JavaScript (which is amazing !), but then, it introduces other “language features” which are not part of standard JavaScript, and because of those, it may throw a false prejudice about TypeScript, by putting it to a “Completely new language” bag, which isn’t really true IMHO.",
   },
   {
     id: 2,
     name: "TypeScript Pro tips/patterns with (or without) React",
     text:
-      "Weasdffasdfdsaadsfll, it definitely makes your Java/C# alter ego feel like home, having types within JavaScript (which is amazing !), but then, it introduces other “language features” which are not part of standard JavaScript, and because of those, it may throw a false prejudice about TypeScript, by putting it to a “Completely new language” bag, which isn’t really true IMHO."
+      "Weasdffasdfdsaadsfll, it definitely makes your Java/C# alter ego feel like home, having types within JavaScript (which is amazing !), but then, it introduces other “language features” which are not part of standard JavaScript, and because of those, it may throw a false prejudice about TypeScript, by putting it to a “Completely new language” bag, which isn’t really true IMHO.",
   },
   {
     id: 3,
     name: "TypeScript Pro tips/patterns with (or without) React",
     text:
-      "Well, itdsafasdfasdfasdfasdf definitely makes your Java/C# alter ego feel like home, having types within JavaScript (which is amazing !), but then, it introduces other “language features” which are not part of standard JavaScript, and because of those, it may throw a false prejudice about TypeScript, by putting it to a “Completely new language” bag, which isn’t really true IMHO."
-  }
+      "Well, itdsafasdfasdfasdfasdf definitely makes your Java/C# alter ego feel like home, having types within JavaScript (which is amazing !), but then, it introduces other “language features” which are not part of standard JavaScript, and because of those, it may throw a false prejudice about TypeScript, by putting it to a “Completely new language” bag, which isn’t really true IMHO.",
+  },
 ];
 
 function Items() {
+  const token = useSelector((state) => state.user.token);
+
+  
   const [items, setItems] = React.useState([]);
   React.useEffect(() => {
     loadItmes();
   }, []);
-
+  
   const loadItmes = async () => {
     const result = await loadAll();
     console.log(result);
-  }
+  };
 
+  
+  if(!token) {
+    return <Redirect to="/login"/>
+  }
+  
   return (
     <>
-      {fakeData.map(item => {
+      {fakeData.map((item) => {
         const { id, name, text } = item;
         return <Item key={id} {...item} />;
       })}

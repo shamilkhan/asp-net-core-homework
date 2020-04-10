@@ -4,20 +4,27 @@ type Props = {
   body?: object;
 };
 
-export default async function({
+export default async function ({
   path = "",
   method = "GET",
-  body = {}
+  body = {},
 } = {}): Promise<Response> {
-  let headers: RequestInit = { mode: "no-cors" };
+  let requestInit: RequestInit = {};
+  // let requestInit: RequestInit = { mode: "no-cors" };
   if (method === "POST") {
     if (body instanceof FormData) {
-      headers.body = body;
+      requestInit.body = body;
     } else {
-      headers.body = JSON.stringify(body);
+      requestInit.body = JSON.stringify(body);
+      requestInit.headers = {
+        "Content-Type": "application/json",
+      };
     }
-    headers.method = "POST";
+    requestInit.method = "POST";
   }
-  let result = await fetch(`https://localhost:5001/${path}`, headers);
+
+  console.log(requestInit)
+
+  let result = await fetch(`http://localhost:5000/${path}`, requestInit);
   return result;
 }
