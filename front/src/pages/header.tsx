@@ -44,7 +44,6 @@ export default function () {
                 "Выйти"
             )}
           </Menu.Item>
-          <Menu.Item key="6">{!!token && <UserIcon />}</Menu.Item>
         </Menu>
       </Layout.Header>
     </Layout>

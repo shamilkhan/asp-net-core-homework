@@ -23,13 +23,17 @@ const Demo = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    return console.log(e);
+    // form.validateFor
+    // window._form = form;
+
     const { username, password, email } = form.getFieldsValue();
     const result = await registerAPI({ username, password, email });
     
     console.log("result is...", result);
   };
 
-  const { getFieldDecorator } = form;
+  // const { getFieldDecorator } = form;
 
   return (
     <Form
@@ -52,9 +56,10 @@ const Demo = (props) => {
           },
         ]}
       >
-        {getFieldDecorator("username")(
-          <Input name="username" type="text" placeholder="username" />
-        )}
+        <Input />
+        {/* {getFieldDecorator("username")( */}
+          {/* <Input name="username" type="text" placeholder="username" /> */}
+        {/* )} */}
       </Form.Item>
 
       <Form.Item
@@ -67,9 +72,10 @@ const Demo = (props) => {
           },
         ]}
       >
-        {getFieldDecorator("email")(
-          <Input name="email" type="text" placeholder="your@mail.com" />
-        )}
+        <Input />
+        {/* {getFieldDecorator("email")( */}
+          {/* <Input name="email" type="text" placeholder="your@mail.com" /> */}
+        // )}
       </Form.Item>
 
       <Form.Item
@@ -82,13 +88,13 @@ const Demo = (props) => {
           },
         ]}
       >
-        {getFieldDecorator("password")(
+        {/* {getFieldDecorator("password")( */}
           <Input.Password
-            name="password"
-            type="password"
-            placeholder="password"
+            // name="password"
+            // type="password"
+            // placeholder="password"
           />
-        )}
+        {/* )} */}
       </Form.Item>
 
       <Form.Item {...tailLayout}>
@@ -100,4 +106,6 @@ const Demo = (props) => {
   );
 };
 
-export default Form.create({ name: "login" })(Demo);
+export default Demo;
+
+// export default Formcreate({ name: "login" })(Demo);
